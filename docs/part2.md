@@ -392,9 +392,65 @@ C++中对文件操作需要包含头文件<fstream>
 
 注意: 文件打开方式可以配合使用，利用`|`操作符，例如`ios::in | ios::out`
 
-#### 5.1 文本文件
+#### 5.1 [文本文件](../part2/part5/read_write/read_write.cpp)
 
+写入:
+* 包含头文件 `include<fstream>`
+* 创建流对象 `ofstream ofs;`
+* 指定路径和打开方式 `ofs.open(path.txt, ios::out);`
+* 写入内容   `ofs << "hello" << endl;`
+* 关闭文件   `ofs.close();`
 
-示例:
-    [写文件](../part2/part5/read_write/read.cpp)
+读取:
+* 包含头文件 `include<fstream>`
+* 创建流对象 `ifstream ifs;`
+* 指定路径和打开方式 `ifs.open(path.txt, ios::in);`
+* 判断是否正常打开 
+    ```
+    if ( ! ifs.is_open()){
+        cout << "read file failed !" << endl;
+        return;
+    }``` 
+* 读取内容的三种方式   
+    ```
+    char buf[1024];
+    // 按行读取
+    while ( ifs.getline(buf, sizeof(buf)) ){
+        cout << buf << endl;
+    }
+    ```
+* 关闭文件   `ifs.close();`
 
+#### 5.1 [二进制文件](../part2/part5/read_write/read_write_byte.cpp)
+
+写入: 调用成员函数write, `ostream& write(const char *buf, int len);`, 其中， 字符指针buf指向内存中的一段空间，len是读写的字节
+* 包含头文件 `include<fstream>`
+* 创建流对象 `ofstream ofs;`
+* 指定路径和打开方式 `ofs.open(path.txt, ios::out | ios::binary);`
+* 写入内容   
+    ```
+        Person p2;
+        ifs.read((char *)&p2, sizeof(Person));  // read() 方法从文件中读取 Person 对象的数据，并将其赋值给 p2
+        cout << "Name: " << p2.Name << "\t Age: " << p2.Age << endl;
+
+        string test;
+        ifs.read((char *)&test, sizeof(test)); 
+    ```
+* 关闭文件   `ofs.close();`
+
+读取: 调用成员函数read, `ostream& read(const char *buf, int len);`, 其中， 字符指针buf指向内存中的一段空间，len是读写的字节
+* 包含头文件 `include<fstream>`
+* 创建流对象 `ifstream ifs;`
+* 指定路径和打开方式 `ifs.open(path.txt, ios::in | ios::binary);`
+* 判断是否正常打开 
+* 读取内容   
+    ```
+        Person p2;
+        ifs.read((char *)&p2, sizeof(Person));  // read() 方法从文件中读取 Person 对象的数据，并将其赋值给 p2
+        cout << "Name: " << p2.Name << "\t Age: " << p2.Age << endl;
+
+        string test;
+        ifs.read((char *)&test, sizeof(test));  // 使用 read() 方法从文件中读取字符串数据，并将其赋值给 test
+        cout << test << endl;
+    ```
+* 关闭文件   `ifs.close();`
