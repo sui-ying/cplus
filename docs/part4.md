@@ -72,9 +72,9 @@ string 内部封装了很多成员方法；例如: 查找find、拷贝copy、删
 string管理char*所分配的内存，不用担心复制越界和取值越界，由内部进行负责
 
 
-string 构造函数:
+*string 构造函数*:
 
-`string();`  创建一个空的字符串
+`string();`  创建一个空的字符串 `string s1`;
 
 `string(const char* s);`  使用字符串s初始化
 
@@ -82,5 +82,16 @@ string 构造函数:
 
 `string(int n, char c);`  使用n个字符从初始化
 
+[示例](../part4/string/example.cpp)
 
+
+*string 赋值操作*:
+
+* string & operator=(const char* s);       // char* 类型字符串赋值给当前的字符串
+* string & operator=(const string &s);     // 把字符串s赋给当前的字符串
+* string & operator=(char c);              // 把字符赋值给当前的字符串
+* string & assign(const char *s);          // 把字符串s赋值给当前的字符串
+* string & assign(const char *s, int n);   // 把字符串s的前n个字符赋值给当前的字符串
+* string & assign(const string &s);        // 把字符串s赋值给当前的字符串
+* string & assign(int n, char c);          // 用n个字符C 赋给当前字符串
 
