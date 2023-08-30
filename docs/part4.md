@@ -95,3 +95,18 @@ string管理char*所分配的内存，不用担心复制越界和取值越界，
 * string & assign(const string &s);        // 把字符串s赋值给当前的字符串
 * string & assign(int n, char c);          // 用n个字符C 赋给当前字符串
 
+
+*string 拼接操作*:
+* string& operator+=(const char* str);    // 重载+=运算符
+* string& operator+=(const char c);       // 重载+=运算符
+* string& operator+=(const string& s);    // 重载+=运算符
+* string& append(const char *s);          // 把字符串s连接到当前字符串结尾
+* string& append(const char *s， int n);  // 把字符串s的前n个字符连接到当前字符串结尾
+* string& append(const string& s);        // 同operator+=(const char* str)
+* string& append(const string& s， int pos, int n);         // 把字符串s从pos开始的第n个字符连接到当前字符串结尾
+
+
+*string 查找和替换*:
+int find(const string& s1, int pos=0) const;  // 查找s1第一次出现位置，从pos位置开始查找
+int rfind(const string& s1, int pos=0) const; // 查找s1最后一次出现位置，从pos位置开始查找
+string& replace(int pos, int n, const string & s1); //替换从pos开始的n个字符为字符串s1
