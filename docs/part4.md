@@ -110,3 +110,31 @@ string管理char*所分配的内存，不用担心复制越界和取值越界，
 int find(const string& s1, int pos=0) const;  // 查找s1第一次出现位置，从pos位置开始查找
 int rfind(const string& s1, int pos=0) const; // 查找s1最后一次出现位置，从pos位置开始查找
 string& replace(int pos, int n, const string & s1); //替换从pos开始的n个字符为字符串s1
+
+
+*string 比较大小*:
+`s1.compare(s2)` 类似python
+
+
+*string 访问和修改其中的字符*:
+
+通过[]访问字符串中的字符
+
+通过string.at()访问字符串中的字符
+
+修改字符串中的字符
+
+*string 插入和删除*:
+
+// insert
+`string& insert(int pos, const char * s);`， 插入字符串
+
+`string& insert(int pos, const string & str);`， 插入字符串
+
+`string& insert(int pos, int n, char c);`， 在指定位置插入n个字符c
+
+`s1.insert(1, "111");`  //在第一个位置插入 111
+
+// erase
+`string& erase(int pos, int n);`, 
+`s1.erase(1, 3);`  //从第一个位置开始删除三个字符
