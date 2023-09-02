@@ -58,6 +58,88 @@ STL几乎所有的代码都采用了模板或者模板函数
 [示例](../part4/vector/example.cpp)  学习如何使用vector、存放一般的数据类型，自定义数据类型， 并且遍历其中的元素；
 
 
+*[vector基本概念](../part4/vector/main.cpp)*
+
+功能:vector数据结构和数组非常相似，也称为单端数组
+
+vector与普通数组的区别: vector -- 动态扩展，不是在原来的空间继续接新空间，而是寻找更大的空间，然后将元数据拷贝到新空间，释放原空间； 数组是静
+态空间
+
+*1. vector构造函数*
+
+`vector<T> v;`  采用模板实现类实现，默认构造函数
+ 
+`vector(v.begin(), v.end());`  将v.begin(), v.end()区间的元素拷贝给本身
+
+`vector(n, elem);` 构造函数将n个elem拷贝给本身
+
+`vector(const vector &vec);` 拷贝构造函数
+
+*2. vector 赋值*
+
+`vector& operator=(const vector &vec)`
+
+`assign(begin, end);`
+
+`assing(n, elem);`
+
+*3. vector 容量和大小*
+
+`empty();` // 判断容器是否为空，空返回true, 不为空返回false
+
+`capacity();`  // 容器的容量，返回整型数值
+
+`size();`  // 返回容器元素的个数
+ 
+`resize(int num);`  // 重新指定容器的长度为num, 若容器边长，则以默认值填充新的位置，如果容器变短，则末尾超出容器长度的元素会被删除掉
+
+`reize(int num, elem);`  // 重新指定容器的长度为num, 若容器边长，则以元素值elem填充新的位置，如果容器变短，则末尾超出容器长度的元素会被删除掉
+
+*4. vector 插入和删除*
+
+`v1.push_back(elem);` // 使用push_back在容器末尾添加元素elem
+
+`v1.pop_back();`  // 使用pop_back在容器末尾删除一个元素
+
+`v1.insert(v1.begin(), 100);`  // 迭代器指向位置插入元素elem
+
+`v1.insert(v1.begin(), 2, 100);`  // 迭代器指向位置pos插入count个元素elem
+
+`v1.erase(v1.begin());`  // 删除迭代器指向的元素
+
+`v1.erase(v1.begin(), v1.end());`  // 删除迭代器从begin到end之间的元素
+
+`v1.clear();` // 删除容器中的所有元素
+
+
+*5. vector 访问元素*
+```
+for (int i=0; i<v1.size(); i++){
+    cout << v1[i] << " ";  // 通过[]访问
+}
+cout << endl;
+
+for (int i=0; i<v1.size(); i++){
+    cout << v1.at(i) << " ";  // 通过at访问
+}
+cout << endl;
+
+cout << "First elem of v1, v1.front(): " << v1.front() << endl; // 第一个元素
+cout << "Last elem of v1, v1.front(): " << v1.back() << endl;  // 最后一个元素
+```
+
+*6. vector 互换容器*
+
+v1.swap(v2); 将容器v1和v2互换
+
+利用swap收缩空间
+
+*7. vector 预留空间*
+
+vector动态空间扩展
+
+
+
 ### 4.3.2 字符串--string
 
 string 是C++风格的字符串，而string本质是一个类
