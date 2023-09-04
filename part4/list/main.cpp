@@ -264,7 +264,6 @@ int main(){
     listInsertErase();
     listAccess();
     listSwap();
-    listReserve();
     listReverse();
 
 }
