@@ -81,7 +81,7 @@ vector与普通数组的区别: vector -- 动态扩展，不是在原来的空�
 
 `assign(begin, end);`
 
-`assing(n, elem);`
+`assign(n, elem);`
 
 *3. vector 容量和大小*
 
@@ -220,3 +220,167 @@ string& replace(int pos, int n, const string & s1); //替换从pos开始的n个�
 // erase
 `string& erase(int pos, int n);`, 
 `s1.erase(1, 3);`  //从第一个位置开始删除三个字符
+
+
+### 4.3.3 [deque](../part4/deque/main.cpp)
+
+功能: 双端数组，可以对头端进行插入和删除
+
+deque 与 vector的区别:
+* vector对于头部的插入和删除效率较低，数据量越大，效率越低
+* deque相对而言，对头部的插入删除速度会比vector快
+* vector访问元素时的速度比deque快，这和两者的背部实现相关
+
+*1. 构造函数* 
+
+`deque<T> deq;`  采用模板实现类实现，默认构造函数
+ 
+`deque(deque.begin(), deque.end());`  将deque.begin(), deque.end()区间的元素拷贝给本身
+
+`deque(n, elem);` 构造函数将n个elem拷贝给本身
+
+`deque(const deque &deq);` 拷贝构造函数
+
+push_back
+pop_back
+push_front
+pop_front
+
+
+*2. deque 赋值*
+
+`deque& operator=(const deque &deq)`
+
+`assign(begin, end);`
+
+`assign(n, elem);`
+
+
+*3. deque 大小*
+
+`empty();` // 判断容器是否为空，空返回true, 不为空返回false
+
+<!-- `capacity();`  // 容器的容量，返回整型数值 -->  deque没有capacity()方法, 无限空间
+
+`size();`  // 返回容器元素的个数
+ 
+`resize(int num);`  // 重新指定容器的长度为num, 若容器边长，则以默认值填充新的位置，如果容器变短，则末尾超出容器长度的元素会被删除掉
+
+`reize(int num, elem);`  // 重新指定容器的长度为num, 若容器边长，则以元素值elem填充新的位置，如果容器变短，则末尾超出容器长度的元素会被删除掉
+
+
+*4. deque 插入和删除*
+
+
+*5. deque 访问*
+
+和vector相似， 可以通过`[]` `at` 访问
+
+
+[评委打分](../part4/deque/score.cpp)
+
+
+### 4.3.4 [栈--stack](../part4/stack/main.cpp)
+
+*先进后出*(first in last out, FILO)的数据结构，只有一个出口*栈顶*
+
+栈中只有顶端的元素才可以被外界使用，因此*栈不允许有遍历行为*
+
+*1. 构造函数*
+
+*2. 赋值*
+进入 push()
+出来 pop()
+
+*3. 数据存取*
+
+*4. 大小操作*
+具有 `empty()` `size()` 方法
+
+
+### 4.3.4 [队列--queue](../part4/queue/main.cpp)
+
+*先进先出*(first in first out, FIFO)的数据结构，只有*队头*和*队尾*
+
+队列中只有两端的元素才可以被外界使用，因此*队列不允许有遍历行为*
+
+*1. 构造函数*
+queue<T> que;
+
+queue(const queue &que);
+
+*2. 赋值*
+queue & operator=(const queue & que)
+
+*3. 数据存取*
+
+push(elem);
+
+pop();
+
+back();
+
+front(); 
+
+*4. 大小操作*
+具有 `empty()` `size()` 方法
+
+
+### 4.3.5 [链表--list](../part4/list/main.cpp)
+
+*数据域 + 指针域* *双向循环链表*
+
+链表的存储方式不是连续的内存空间，因此链表中的迭代器只支持前移和后移，属于双向迭代器
+
+优点: 
+* 1. 可以对任意位置进行快速删除和插入操作
+* 2. 采用动态存储分配，不会造成内存浪费和溢出
+
+缺点: 对于元素的遍历速度，没有数组快； 占用的空间比数组大
+
+
+*1. 构造函数*
+`list<T> lst;`            // 类模板实现， 对象的默认构造形式
+`list(begin, end);`       // 将区间元素拷贝给本身
+`list(n, elem);`          // 将n个elem拷贝给本身
+`list(const list &lst);`  // 拷贝构造函数
+
+
+*2. 赋值assign*
+assin(begin(), end());
+
+assin(n, elem);
+
+list& operator=(const list &lst);
+
+*3. 交换swap*
+swap(lst);
+
+*4. 大小操作*
+`empty();`    // 空为true，非空为false
+
+`size();`     // 大小判断
+
+`resize(n);`  // 重新指定容器的长度为num, 若容器边长，则以元素值elem填充新的位置，如果容器变短，则末尾超出容器长度的元素会被删除掉
+
+*5. 插入和删除*
+
+push_back
+
+push_front
+
+pop_back
+
+pop_front
+
+insert
+
+erase
+
+clear
+
+remove
+
+*5. 数据存取*
+
+由于list不是由连续的线性空间存储数据，不可以通过[]访问, 不可以通过at访问
