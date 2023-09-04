@@ -381,6 +381,62 @@ clear
 
 remove
 
-*5. 数据存取*
+*6. 数据存取*
 
 由于list不是由连续的线性空间存储数据，不可以通过[]访问, 不可以通过at访问
+
+*7. 排序*
+
+[示例](../part4/list/example.cpp)
+
+
+
+### 4.3.6 [集合--set/multiset](../part4/set/main.cpp)
+
+二叉树结构， 所有的元素会在插入时*自动排序*
+
+区分选择使用: set不允许容器中有重复的元素，而multiset允许容器中有重复的元素; 
+
+*1. 构造函数*
+`set<T> st;`            // 类模板实现， 对象的默认构造形式
+`set(const set &st);`   // 拷贝构造函数
+
+*2. 赋值assign*
+set& operator=(const set &st);
+
+*3. 大小和交换*
+
+成员函数: `empty()`, `size()`, `st1.swap(st2)`
+
+*4. 插入和删除*
+
+成员函数: insert(), erase(), clear()
+
+*5. 查找和统计*
+
+* 对set容器进行查找数据及其统计
+
+find(key);   // 查找key是否存在，若存在，返回*该键的元素迭代器*；若不存在，返回set.end();
+
+count(key);  //  统计key的元素个数
+
+*6. 排序*
+set默认从小到大排序， 利用仿函数实现从大到小排序；
+
+
+### 4.3.6.1 [对组--pair](../part4/set/pair.cpp)
+
+```
+// 第一种方式
+pair<string, int>p("momo", 18);
+cout << "Name: " << p.first << "\t Age: " << p.second << endl;
+
+// 第二种方式
+pair<string, int>p2 = make_pair("momo", 18);
+cout << "Name: " << p2.first << "\t Age: " << p2.second << endl;
+```
+
+
+
+
+
