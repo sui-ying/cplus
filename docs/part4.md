@@ -424,7 +424,7 @@ count(key);  //  统计key的元素个数
 set默认从小到大排序， 利用仿函数实现从大到小排序；
 
 
-### 4.3.6.1 [对组--pair](../part4/set/pair.cpp)
+#### 4.3.6.1 [对组--pair](../part4/set/pair.cpp)
 
 ```
 // 第一种方式
@@ -435,6 +435,61 @@ cout << "Name: " << p.first << "\t Age: " << p.second << endl;
 pair<string, int>p2 = make_pair("momo", 18);
 cout << "Name: " << p2.first << "\t Age: " << p2.second << endl;
 ```
+
+
+### 4.3.7 [map/multimap](../part4/map/main.cpp)
+
+关联式容器，底层结构为二叉树
+
+map中所有元素都是*pair*
+
+pair中第一个元素为key--检索作用， 第二个元素为value
+
+所有元素都会根据元素的键值自动排序
+
+优点: 可以根据key值快速找到value值
+
+map和multimap区别: map不允许容器中有重复的key, multimap允许容器中有重复的key
+
+*1. 构造函数和赋值*
+
+map<int, int>m1;  // 默认构造 无参构造
+
+map<int, int>m2(m1);  //拷贝构造
+
+m3 = m1;  // 赋值操作
+
+*2. 大小和交换*
+成员函数: `inset()` `empty()` `size()` `swap()`
+
+
+*3. 插入和删除*
+insert(elem);     // 在容器中插入元素
+
+clear();          // 消除所有元素
+
+erase();          // 删除pos迭代器所指的元素，返回下一个元素的迭代器  
+
+erase(beg, end);  // 删除区间(beg, end)的所有元素，返回下一个元素的迭代器
+
+erase(key);       // 删除容器中为key的元素  
+
+
+*4. 查找和统计*
+
+find();           // 查找key是否存在，若存在，返回该键的迭代器；若不存在，返回set.end()
+
+count(key);       // 统计key的元素个数
+
+
+*5. 排序*
+
+
+
+
+
+
+
 
 
 
