@@ -542,3 +542,34 @@ template<class T> bool logical_and<T>          //逻辑与
 template<class T> bool logical_or<T>           //逻辑或
 template<class T> bool logical_not<T>          //逻辑非
 ```
+
+
+## 4.5 STL常用算法
+
+主要用的头文件有 `<algorithm>` `<functional>` `<numeric>`
+
+* algorithm: 比较、交换、查找、遍历、复制、修改等
+* functional: 数学运算等模板函数
+* numeric: 定义了一些模板类，用以声明函数对象
+
+## 4.5.1 [常用的遍历算法](../part4/algorithm/traversal/traversal.cpp)
+
+`for_each`  // 遍历
+
+`tranform`  // 将一个搬到另一个容器中
+
+## 4.5.2 [常用的查找算法](../part4/algorithm/find/find.cpp)
+
+`find`  // 查找元素
+
+`find_if`  // 按条件查找元素
+
+`adjacent_find(begin, end)`  // 查找相邻重复元素，返回第一个相同元素的第一个位置迭代器
+
+`binary_search(begin, end, val);`  // 从有序序列指定区间中二分查找; 若查到返回true, 否则返回false
+
+`int nums = count(v.begin(), v.end(), 4);`  // 统计元素出现次数，返回int 0或者1，2，..
+
+`int nums = count_if(v.begin(), v.end(), 4);`  // 按条件统计元素出现次数，返回int 0或者1，2，..
+
+
