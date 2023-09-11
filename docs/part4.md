@@ -509,3 +509,36 @@ count(key);       // 统计key的元素个数
 * 返回布尔类型的仿函数称为谓词
 * 如果operator()接受一个参数，那么叫做一元谓词；如果operator()接受两个参数，那么叫做二元谓词
 
+### 4.4.3 [内建函数](../part4/function_object/built_in_function.cpp)
+
+用法: 这些仿函数所产生的对象，用法和一般函数完全相同；使用内建函数对象，需要引入头文件`#include<functional>`
+
+#### 4.4.3.1 算术仿函数
+实现四则运算，仿函数原型:
+```
+template<class T> T plus<T>        // 加法仿函数
+template<class T> T minus<T>       // 减法仿函数
+template<class T> T mulitplies<T>  // 乘法仿函数
+template<class T> T divides<T>     // 除法仿函数
+template<class T> T mudules<T>     // 取模仿函数
+template<class T> T negate<T>      // 取反仿函数， 一元仿函数
+```
+
+#### 4.4.3.2 关系仿函数
+实现关系运算，仿函数原型:
+```
+template<class T> bool equal_to<T>          // 等于
+template<class T> bool not_equal_to<T>      // 不等于
+template<class T> bool greater<T>           // 大于
+template<class T> bool greater_equal<T>     // 大于等于
+template<class T> bool less<T>              // 小于
+template<class T> bool less_equal<T>        // 小于等于
+```
+
+#### 4.4.3.1 逻辑仿函数
+实现逻辑运算，仿函数原型:
+```
+template<class T> bool logical_and<T>          //逻辑与
+template<class T> bool logical_or<T>           //逻辑或
+template<class T> bool logical_not<T>          //逻辑非
+```
