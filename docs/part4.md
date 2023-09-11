@@ -552,13 +552,13 @@ template<class T> bool logical_not<T>          //逻辑非
 * functional: 数学运算等模板函数
 * numeric: 定义了一些模板类，用以声明函数对象
 
-## 4.5.1 [常用的遍历算法](../part4/algorithm/traversal/traversal.cpp)
+### 4.5.1 [常用的遍历算法](../part4/algorithm/traversal/traversal.cpp)
 
 `for_each`  // 遍历
 
 `tranform`  // 将一个搬到另一个容器中
 
-## 4.5.2 [常用的查找算法](../part4/algorithm/find/find.cpp)
+### 4.5.2 [常用的查找算法](../part4/algorithm/find/find.cpp)
 
 `find`  // 查找元素
 
@@ -573,3 +573,71 @@ template<class T> bool logical_not<T>          //逻辑非
 `int nums = count_if(v.begin(), v.end(), 4);`  // 按条件统计元素出现次数，返回int 0或者1，2，..
 
 
+### 4.5.3 [常用的排序算法](../part4/algorithm/sort/sort.cpp)
+
+`sort(beg, end, _predicate)`  // 排序 或者 通过使用仿函数定义的顺序排序
+
+```
+srand((unsigned int)time(NULL));   // #include<ctime>, 随机种子
+vector<int>v;  
+random_shuffle(v.begin(), v.end());  // 洗牌算法
+```
+
+`merge(v1.begin(), v1.end(), v2.begin(), v2.end(), vTarget.begin());`  //合并: 需要给目标容器提前分配大小
+
+`reverse(v.begin(), v.end());`            // 容器反转
+
+
+### 4.5.4 [常用的拷贝和替换算法](../part4/algorithm/copy/copy.cpp)
+
+```
+vector<int>v = {2, 3, 1, 5, 4};
+vector<int>v2;
+v2.resize(v.size());   // 需要给目标容器分配空间
+copy(v.begin(), v.end(), v2.begin());  // 复制算法: (起始迭代器，结束迭代器，目标起始迭代器)
+```
+
+`replace(v.begin(), v.end(), 1, 10);     // 替换算法: (beg, end, oldValue, newValue)`
+
+`replace_if(v.begin(), v.end(), Replace(3), 10);  // 按条件替换算法: (beg, end, _predicate, newValue)`
+
+`swap(v, v2);`  // 交换两个容器
+
+
+
+### 4.5.5 [常用的算术生成算法](../part4/algorithm/accumulate_fill/accumulate_fill.cpp)
+
+```
+#include<numeric>
+int total = accumulate(v.begin(), v.end(), 0);  // (beg, end, 起始值)
+```
+
+`fill(v.begin(), v.end(), 100);`    // 将容器区间的元素填充为特定值
+
+
+### 4.5.6 [常用的集合算法](../part4/algorithm/set/set.cpp)
+
+vector v, v2必须是*有序序列*
+
+```
+// 求交集
+vector<int>vt;
+vt.resize(min(v.size(), v2.size()));  // 定义容器大小
+// 返回交集中最后一个元素位置迭代器
+vector<int>::iterator itEnd = set_intersection(v.begin(), v.end(), v2.begin(), v2.end(), vt.begin());
+```
+
+```
+// 求并集
+vector<int>vt;
+vt.resize(v.size()+v2.size());  // 定义容器大小
+// 返回并集中最后一个元素位置迭代器
+vector<int>::iterator itEnd = set_union(v.begin(), v.end(), v2.begin(), v2.end(), vt.begin());
+```
+
+```
+vector<int>vt1;
+vt1.resize(max(v.size(), v2.size()));  // 定义容器大小
+// 求v1与v2的差集
+vector<int>::iterator itEnd1 = set_difference(v.begin(), v.end(), v2.begin(), v2.end(), vt1.begin());
+```
