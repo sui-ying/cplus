@@ -113,6 +113,8 @@ vector与普通数组的区别: vector -- 动态扩展，不是在原来的空�
 
 
 *5. vector 访问元素*
+
+不具有`v[-1]`访问操作, `v[0], v[v.size()]`
 ```
 for (int i=0; i<v1.size(); i++){
     cout << v1[i] << " ";  // 通过[]访问
@@ -138,6 +140,40 @@ v1.swap(v2); 将容器v1和v2互换
 
 vector动态空间扩展
 
+打印容器中的元素
+
+```
+for (const auto& element : v) {
+    std::cout << element << " ";
+}
+cout << endl;
+
+for (vector<int>::iterator it = v.begin(); it != v.end(); it++){
+    cout << *it << " ";
+}
+cout << endl;
+
+```
+
+*访问并打印二维vector的两种方式*
+```
+void printVector2D(const vector<vector<int>>& vec) {
+    for (auto it = vec.begin(); it != vec.end(); ++it) {
+        // it 为一个指针， 指向二维向量vec的一级迭代器
+        for (auto jt = it->begin(); jt != it->end(); ++jt) {
+            cout << *jt << " ";
+        }
+        cout << endl;
+    }
+
+    for (vector<vector<int>>::iterator it = dp.begin(); it != dp.end(); it++){
+        for (vector<int>::iterator jt = it->begin(); jt != it->end(); jt++){
+            cout << *jt << " ";
+        }
+        cout << endl;
+    }
+}
+```
 
 
 ### 4.3.2 字符串--string
@@ -166,6 +202,11 @@ string管理char*所分配的内存，不用担心复制越界和取值越界，
 
 [示例](../part4/string/example.cpp)
 
+*sring 长度*
+
+`s1.size()`
+
+`s1.length()`
 
 *string 赋值操作*:
 
