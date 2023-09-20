@@ -1,3 +1,0 @@
-/home/westwell/Documents/learning/CPP/demo/build/CMakeFiles/hello.dir
-/home/westwell/Documents/learning/CPP/demo/build/CMakeFiles/edit_cache.dir
-/home/westwell/Documents/learning/CPP/demo/build/CMakeFiles/rebuild_cache.dir
