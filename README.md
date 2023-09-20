@@ -36,7 +36,7 @@
 包含面试考点，疑难点
 
 
-### 4. [CMakeList学习](docs/CMakeList.md)
+### 4. [CMakeLists学习](docs/CMakeLists.md)
 
 
 
